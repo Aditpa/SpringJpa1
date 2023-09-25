@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>school</title>
+</head>
+<body>
+<h3 th:text="${school.id} ? 'Edit School' : 'Create school'">school</h3>
+<form method="post" th:action="@{/school}" th:object="${school}">
+    <input name="id" th:field="*{id}" type="hidden">
+    <label for="school-name">School name:</label>
+    <input id="school-name" name="name" placeholder="Harry" required th:field="*{name}" type="text">
+    <br><br>
+    <label for="school-biography">Biography:</label>
+    <textarea id="school-biography" name="biography" th:field="*{biography}"></textarea>
+    <br><br>
+    <label for="school-is-muggle">Is Muggle ?</label>
+    <input id="school-is-muggle" name="muggle" th:field="*{muggle}" type="checkbox">
+    <br><br>
+    <input type="submit" value="Send">
+</form>
+</body>
+</html>

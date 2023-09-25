@@ -1,0 +1,51 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>school List</title>
+</head>
+<style>
+    table {
+        border-collapse: collapse;
+    }
+    th {
+        background-color: #4CAF50;
+        color: white;
+    }
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    th, td {
+        border-bottom: 1px solid #ddd;
+        padding: 10px 5px;
+        text-align: left;
+    }
+</style>
+<body>
+<h3>schools</h3>
+<a href="/school">Add a new school !</a>
+<br><br>
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>name</th>
+
+        <th>Biography</th>
+        <th>Muggle</th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="school : ${schools}">
+        <td th:text="${school.id}">id</td>
+        <td th:text="${school.name}">first name</td>
+        <td th:text="${school.biography}">biography</td>
+        <td th:text="${school.muggle}">muggle</td>
+        <td><a th:href="@{/school(id=${school.id})}">Edit</a></td>
+        <td><a th:href="@{/school/delete(id=${school.id})}">Remove</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
